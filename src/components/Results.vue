@@ -1,35 +1,35 @@
 <template>
   <div>
-    <div v-for="(group,groupName) in groups" :key="groupName" class="groups" v-if="groups">
-      <v-divider></v-divider>
-      <Group :group="group" :name="groupName"/>
+    <div v-if="groups">
+      <div v-for="(group,groupName) in groups" :key="groupName" class="groups">
+        <v-divider></v-divider>
+        <Group :group="group" :name="groupName"/>
+      </div>
     </div>
-    <div v-else>
-      No results
-    </div>
+    <div v-else>No results</div>
   </div>
 </template>
 
 <script>
-import Group from '@/components/Group';
+import Group from "@/components/Group";
 export default {
   props: {
     groups: {
-        type: Object,
-        default() {
-          return {}
-        }
+      type: Object,
+      default() {
+        return {};
+      }
     }
   },
 
   components: {
-    Group,
-  },
+    Group
+  }
 };
 </script>
 
-<style lang="scss">
+<style>
 .groups {
-   text-aligned: left;
+  text-aligned: left;
 }
 </style>
