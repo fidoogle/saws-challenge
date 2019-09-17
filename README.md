@@ -1,2 +1,0 @@
-# iTunesLight
-Created with CodeSandbox
