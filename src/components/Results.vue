@@ -1,5 +1,12 @@
 <template>
   <div>
+    <p v-show="!noclick">
+      <v-text-field
+        label="Email to notify of favorite changes"
+        filled
+        v-model="email"
+      ></v-text-field>
+    </p>
     <div v-if="groups">
       <v-list>
         <v-list-item 
@@ -24,6 +31,7 @@
 </template>
 
 <script>
+import { pickFavorite } from "@/services";
 import {mapGetters, mapMutations} from 'vuex';
 
 export default {
@@ -37,6 +45,12 @@ export default {
     noclick: {
       type: Boolean,
       default: false
+    }
+  },
+
+  data() {
+    return {
+      email: null
     }
   },
 
@@ -59,8 +73,18 @@ export default {
       if (!this.noclick) {
         if (this.getFavorite(item)) {
           this.removeFavorite(item);
+          pickFavorite({
+            email: this.email,
+            favorite: item.name,
+            picked: false
+          });
         } else {
           this.addFavorite(item);
+          pickFavorite({
+            email: this.email,
+            favorite: item.name,
+            picked: true
+          });
         }
       }
     }
