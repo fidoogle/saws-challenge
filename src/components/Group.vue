@@ -37,9 +37,9 @@ export default {
       required: true,
     },
     group: {
-        type: Array,
+        type: Object,
         default() {
-          return []
+          return {}
         },
     }
   },

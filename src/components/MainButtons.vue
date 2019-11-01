@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       links: [
-        {label:'Search', route: '/'},
+        {label:'SA Data', route: '/'},
         {label:'Favorites', route: '/favorites'},
       ],
     }

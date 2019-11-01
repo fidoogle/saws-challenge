@@ -6,7 +6,7 @@
         color="primary"
         dark
       >
-        <v-toolbar-title>Lightweight iTunes Catalog</v-toolbar-title>
+        <v-toolbar-title>SAWS</v-toolbar-title>
         <v-spacer/>
         <MainButtons/>
       </v-app-bar>

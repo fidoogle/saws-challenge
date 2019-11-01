@@ -1,17 +1,14 @@
 <template>
   <div>
-    <div v-if="getFavoritesByKind">
-      <div v-for="(group,groupName) in getFavoritesByKind" :key="groupName" class="group">
-        <v-divider></v-divider>
-        <Group :group="group" :name="groupName"/>
-      </div>
+    <div v-if="getFavorites">
+        <Results :groups="getFavorites" :noclick="true"/>
     </div>
     <div v-else>No results</div>
   </div>
 </template>
 
 <script>
-import Group from "@/components/Group";
+import Results from "@/components/Results";
 import { mapGetters } from "vuex";
 
 export default {
@@ -25,11 +22,11 @@ export default {
   },
 
   components: {
-    Group
+    Results
   },
 
   computed: {
-    ...mapGetters("favorites", ["getFavoritesByKind"])
+    ...mapGetters("favorites", ["getFavorites"])
   }
 };
 </script>

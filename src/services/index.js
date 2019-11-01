@@ -1,16 +1,16 @@
 import axios from "axios";
-import { groupBy } from "lodash";
 
-export const searchAPI = async term => {
+export const getFolders = async (source='SA') => {
+  let url = "https://services.arcgis.com/g1fRTDLeMgspWrYp/ArcGIS/rest/services?f=json";
+  if (source!=='SA') {
+    url = 'https://qagis.sanantonio.gov/arcgis/rest/services?f=pjson';
+  }
   try {
-    const result = await axios.get(
-      `https://itunes.apple.com/search?term=${term}`
-    );
-    const results = result.data.results;
-    const groups = groupBy(results, "kind");
-    const { undefined, ...restGroups } = groups; //destruct undefined group
-    return restGroups;
+    const responseForFolders = await axios.get(url);
+    console.log("fidel", { responseForFolders });
+    return responseForFolders.data.services;
   } catch (e) {
+    console.warn("Could not get folders");
     return null;
   }
 };
