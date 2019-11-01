@@ -15,13 +15,6 @@ const getters = {
 
   getFavorites: state => {
     return state.favorites;
-  },
-
-  getFavoriteById: state => id =>
-    find(state.favorites, fav => fav.trackId === id), //returns null if not found
-
-  getFavoritesByKind: state => {
-    return groupBy(state.favorites, "kind");
   }
 };
 
