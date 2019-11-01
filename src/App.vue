@@ -40,13 +40,11 @@
 
 <script>
 import MainButtons from '@/components/MainButtons';
-import Search from '@/components/Search';
 
 export default {
   name: 'App',
   components: {
-    MainButtons,
-    Search
+    MainButtons
   },
 };
 </script>

@@ -1,10 +1,15 @@
 import { filter, find, groupBy } from "lodash";
 
 const state = {
-  favorites: []
+  favorites: [],
+  email: null
 };
 
 const getters = {
+  getEmail: state => {
+    return state.email;
+  },
+
   getFavorite: state => item =>
     find(state.favorites, fav => fav.name === item.name && fav.type === item.type), //returns null if not found
 
@@ -34,6 +39,10 @@ const mutations = {
       state.favorites,
       fav => ((fav.name != name) || (fav.type != type))
     );
+  },
+
+  setEmail(state, payload) {
+    state.email = payload;
   }
 };
 

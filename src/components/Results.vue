@@ -4,7 +4,7 @@
       <v-text-field
         label="Email to notify of favorite changes"
         filled
-        v-model="email"
+        :value="getEmail" @input="updateEmail($event)"
       ></v-text-field>
     </p>
     <div v-if="groups">
@@ -55,11 +55,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters('favorites', ['getFavorite']),
+    ...mapGetters('favorites', ['getEmail','getFavorite']),
   },
 
   methods: {
-    ...mapMutations('favorites', ['addFavorite', 'removeFavorite']),
+    ...mapMutations('favorites', ['addFavorite', 'removeFavorite', 'setEmail']),
 
     favColor(item) {
       if (this.getFavorite(item)) {
@@ -74,19 +74,23 @@ export default {
         if (this.getFavorite(item)) {
           this.removeFavorite(item);
           pickFavorite({
-            email: this.email,
+            email: this.getEmail,
             favorite: item.name,
             picked: false
           });
         } else {
           this.addFavorite(item);
           pickFavorite({
-            email: this.email,
+            email: this.getEmail,
             favorite: item.name,
             picked: true
           });
         }
       }
+    },
+
+    updateEmail(e) { // notice e is directly the value
+      this.setEmail(e);
     }
   }
 };

@@ -34,7 +34,7 @@ export default {
   methods: {
     async onSubmit() {
       this.groups = await searchAPI(this.term);
-      console.log(this.groups);
+      //console.log(this.groups);
     }
   }
 };

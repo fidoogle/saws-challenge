@@ -7,13 +7,13 @@ import Favorites from "@/store/modules/favorites.js";
 // Configure localforage
 LocalForage.config({
   driver: LocalForage.INDEXEDDB,
-  name: "iTunesFavs",
+  name: "sawsFavs",
   version: 1.0,
-  storeName: "iFavs-store"
+  storeName: "sawsFavs-store"
 });
 
 const vuexLocal = new VuexPersistence({
-  key: "iFavsStore",
+  key: "sawsFavsStore",
   storage: window.sessionStorage
 });
 
